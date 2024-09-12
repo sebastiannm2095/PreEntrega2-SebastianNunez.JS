@@ -24,12 +24,12 @@ function solicitarNombre(mensaje, campo) {
     return nombre;
 }
 
-// Array para almacenar los datos de los clientes
+// Array para almacenar los datos de los clientes a ingresar en la pagina
 let clientes = [];
 let continuar = true;
 
 while (continuar) {
-    // Crear un objeto con las propiedades clave-valor
+    // Crea un objeto con las propiedades clave-valor
     let usuario = {
         nombreCliente: solicitarNombre("Ingrese aquí su nombre", "nombre"),
         sueldo: solicitarNumero("Ingrese aquí su sueldo líquido:", "el sueldo"),
@@ -38,7 +38,7 @@ while (continuar) {
         tarjetaCredito: solicitarNumero("Ingrese aquí sus gastos en tarjeta de crédito:", "los gastos en tarjeta de crédito"),
         aniosCredito: solicitarNumero("Ingrese aquí a cuántos años desea solicitar su crédito hipotecario", "años crédito"),
 
-        // Definir las funciones dentro del mismo objeto
+        // Define las funciones dentro del mismo objeto
         montoDisponible: function () {
             let ingresoTotal = this.sueldo + this.otroIngreso;
             let gastosTotales = this.gastos + this.tarjetaCredito;
@@ -50,14 +50,14 @@ while (continuar) {
         }
     };
 
-    // Calcular y almacenar los valores de montoDisponible y creditoMaximo como propiedades
+    // Calcula y almacena los valores de montoDisponible y creditoMaximo como propiedades
     usuario.montoDisponibleValor = usuario.montoDisponible();
     usuario.creditoMaximoValor = usuario.creditoMaximo();
 
-    // Agregar el objeto 'usuario' al array 'clientes'
+    // Agrega el objeto 'usuario' al array 'clientes'
     clientes.push(usuario);
 
-    // Preguntar si desea continuar ingresando usuarios
+    // Pregunta si desea continuar ingresando usuarios a la pagina, si se cancela termina la iteracion
     continuar = confirm("¿Desea ingresar otro usuario?");
 }
 
@@ -79,5 +79,5 @@ function simularCreditos(clientes) {
     });
 }
 
-// Llamar a la función de simulación de créditos
+// Llama a la función de simulación de créditos
 simularCreditos(clientes);
